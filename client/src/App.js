@@ -1,5 +1,7 @@
-import './App.css';
+import React from "react";
+import { Container } from "react-bootstrap";
+import './App.scss';
 const App = () => {
-  return <div></div>
+  return <Container></Container>
 }
 export default App;
