@@ -1,7 +1,7 @@
-import React from "react";
-import { Container } from "react-bootstrap";
+import React from 'react';
 import './App.scss';
 const App = () => {
-  return <Container></Container>
+  return <div>
+  </div>
 }
 export default App;
