@@ -1,16 +1,14 @@
 import React from 'react';
 import Navigation from './Navigation/Navigation';
 import SearchPanel from './SearchPanel/SearchPanel'
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Container } from 'react-bootstrap';
 import style from './Header.module.scss';
-const Header = () => {
+const Header = ({ currentTheme, setCurrentTheme }) => {
     return (
-        <Row className={style.header}>
-            <Col>
-                <Navigation></Navigation>
-                <SearchPanel></SearchPanel>
-            </Col>
-        </Row>
+        <Container className={style.header} fluid>
+            <Navigation currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}></Navigation>
+            <SearchPanel></SearchPanel>
+        </Container>
     );
 }
 

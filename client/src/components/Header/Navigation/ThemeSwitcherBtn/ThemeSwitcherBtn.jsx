@@ -1,20 +1,20 @@
-import { useState } from 'react';
 import { useThemeSwitcher } from 'react-css-theme-switcher';
 import { Button } from 'react-bootstrap';
 
-const ThemeSwitcherBtn = () => {
+const ThemeSwitcherBtn = ({ currentTheme, setCurrentTheme }) => {
     const { switcher, themes } = useThemeSwitcher();
-    const [isDarkMode, setIsDarkMode] = useState(false);
-
-    const toggleDarkMode = () => {
-        setIsDarkMode(previous => {
-            return !previous;
+    const toggleTheme = () => {
+        setCurrentTheme(previous => {
+            if (previous === 'light') {
+                return 'dark'
+            }
+            return 'light'
         });
-        switcher({ theme: isDarkMode ? themes.light : themes.dark });
+        switcher({ theme: currentTheme === 'dark' ? themes.light : themes.dark });
     };
-
+    localStorage.setItem('currentTheme', currentTheme);
     return (
-        <Button variant="secondary" onClick={toggleDarkMode} >{isDarkMode ? 'light theme' : 'dark theme'}</Button>
+        <Button variant="secondary" onClick={toggleTheme}>toggle theme</Button>
     );
 };
 export default ThemeSwitcherBtn;

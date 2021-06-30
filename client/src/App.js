@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
-import { Container } from 'react-bootstrap';
 import { ThemeSwitcherProvider } from 'react-css-theme-switcher';
 import Header from './components/Header/Header';
+import Main from './components/Main/Main'
 
 const themes = {
   light: 'https://bootswatch.com/5/flatly/bootstrap.min.css',
@@ -10,11 +10,11 @@ const themes = {
 };
 
 const App = () => {
+  const [currentTheme, setCurrentTheme] = useState(localStorage.getItem('currentTheme'));
   return (
-    <ThemeSwitcherProvider defaultTheme="light" themeMap={themes}>
-      <Container fluid>
-        <Header></Header>
-      </Container>
+    <ThemeSwitcherProvider defaultTheme={currentTheme} themeMap={themes}>
+      <Header currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}></Header>
+      <Main></Main>
     </ThemeSwitcherProvider>
   )
 
