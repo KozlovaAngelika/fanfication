@@ -1,7 +1,4 @@
 .auth{
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
     height: 100%;
     padding-top: 5rem;
     form{
@@ -12,6 +9,7 @@
         }
         button{
             margin-right: 5px;
+            min-width:100px;
         }
         a{
             text-decoration: none;

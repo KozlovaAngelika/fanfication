@@ -1,9 +1,15 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import config from 'config';
+import router from './routes/auth.routes.js'
 
 const app = express();
 const PORT = config.get('port') || 5000;
+app.use(express.json({
+    extended: true
+}));
+app.use('/api/auth', router);
+
 
 async function start() {
     try {

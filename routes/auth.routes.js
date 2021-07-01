@@ -1,10 +1,10 @@
 import Router from 'express';
-import User from './../models/user'
-export const router = Router;
+import User from './../models/user.js'
+const router = Router();
 
-router.post('registration', async (req, res) => {
+router.post('/registration', async (req, res) => {
     try {
-        const { email, passwors } = req.body;
+        const { name, email, password } = req.body;
         const isUsed = await User.findOne({
             email
         });
@@ -14,7 +14,7 @@ router.post('registration', async (req, res) => {
             })
         }
         const user = new User({
-            email, password
+            name, email, password
         })
         await user.save(user);
         res.status(201).json({
@@ -24,3 +24,4 @@ router.post('registration', async (req, res) => {
         console.error(error);
     }
 })
+export default router;

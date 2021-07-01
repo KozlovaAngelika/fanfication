@@ -1,7 +1,7 @@
 import React from 'react';
 import Navigation from './Navigation/Navigation';
 import SearchPanel from './SearchPanel/SearchPanel'
-import { Row, Col, Container } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import style from './Header.module.scss';
 const Header = ({ currentTheme, setCurrentTheme }) => {
     return (
