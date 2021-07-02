@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { Row, Form, Button } from 'react-bootstrap';
 import style from './Auth.module.scss';
 import { Route, Link } from 'react-router-dom';
-import SignIn from './SignIn/SignIn'
-import SignUp from './SignUp/SignUp'
+import SignIn from './SignIn/SignIn';
+import SignUp from './SignUp/SignUp';
 
 const Auth = () => {
     const [form, setForm] = useState({ name: '', email: '', password: '' });

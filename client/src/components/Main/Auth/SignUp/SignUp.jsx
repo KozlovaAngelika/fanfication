@@ -22,35 +22,37 @@ const SignUp = ({ cnahgeHandler, form, setForm }) => {
         }
     }
     return (
-        <Form onSubmit={(e) => { e.preventDefault() }}>
+        <Form onSubmit={(e) => { e.preventDefault() }} className='d-flex flex-column justify-content-between'>
             <h3>Sign up</h3>
-            <Form.Group controlId="formBasicName">
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                    type="text"
-                    placeholder="Enter your name"
-                    name="name"
-                    onChange={cnahgeHandler}
-                />
-            </Form.Group>
-            <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email</Form.Label>
-                <Form.Control
-                    type="email"
-                    placeholder="Enter email"
-                    name="email"
-                    onChange={cnahgeHandler}
-                />
-            </Form.Group>
-            <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                    type="password"
-                    placeholder="Password"
-                    name="password"
-                    onChange={cnahgeHandler}
-                />
-            </Form.Group>
+            <div className='d-flex flex-column justify-content-start flex-grow-1'>
+                <Form.Group controlId="formBasicName">
+                    <Form.Label>Name</Form.Label>
+                    <Form.Control
+                        type="text"
+                        placeholder="Enter your name"
+                        name="name"
+                        onChange={cnahgeHandler}
+                    />
+                </Form.Group>
+                <Form.Group controlId="formBasicEmail">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                        type="email"
+                        placeholder="Enter email"
+                        name="email"
+                        onChange={cnahgeHandler}
+                    />
+                </Form.Group>
+                <Form.Group controlId="formBasicPassword">
+                    <Form.Label>Password</Form.Label>
+                    <Form.Control
+                        type="password"
+                        placeholder="Password"
+                        name="password"
+                        onChange={cnahgeHandler}
+                    />
+                </Form.Group>
+            </div>
             <div className="d-flex justify-flex-start align-items-center">
                 <Button
                     variant="secondary"
