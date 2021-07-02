@@ -1,11 +1,13 @@
 import React from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { sha3_256 } from "js-sha3";
 import axios from 'axios';
 
 const SignUp = ({ cnahgeHandler, form, setForm }) => {
     const registerHandler = async () => {
         try {
+            form.password = (sha3_256(form.password))
             await axios.post('/api/auth/registration', {
                 ...form
             }, {
