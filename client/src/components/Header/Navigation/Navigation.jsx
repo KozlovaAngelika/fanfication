@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap';
 import ThemeSwitcherBtn from './ThemeSwitcherBtn/ThemeSwitcherBtn';
-import logo from './../../../media/logo.jpg';
+import logo from '@media/logo.jpg';
 import style from './Navigation.module.scss';
 import AuthLinks from './AuthLinks/AuthLinks';
 const Navigation = ({ currentTheme, setCurrentTheme }) => {
