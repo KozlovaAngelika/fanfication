@@ -4,11 +4,11 @@ import style from './AuthLinks.module.scss';
 
 const AuthLinks = () => {
     return (
-        <React.Fragment>
+        <div className={`${style.authLinks} d-flex align-items-center`}>
             <Link to='signin'>sign in</Link>
             <div className={style.separator}></div>
             <Link to='signup'>sign up</Link>
-        </React.Fragment>
+        </div>
     );
 }
 
