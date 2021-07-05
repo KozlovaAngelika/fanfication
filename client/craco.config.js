@@ -1,14 +1,15 @@
-const CracoAlias = require("craco-alias");
+const CracoAlias = require('craco-alias');
 
 module.exports = {
     plugins: [
         {
             plugin: CracoAlias,
             options: {
-                source: "options",
-                baseUrl: "./",
+                source: 'options',
+                baseUrl: './',
                 aliases: {
-                    "@media": "./src/media",
+                    '@routes': './src/routes.jsx',
+                    '@media': './src/media',
                 }
             }
         }

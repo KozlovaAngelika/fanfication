@@ -64,7 +64,7 @@ const SignUp = ({ cnahgeHandler, form, setForm }) => {
                 >
                     Sign up
                 </Button>
-                <Link to='signin'>sign in</Link>
+                <Link to='/auth/signin'>sign in</Link>
             </div>
         </Form>
     );

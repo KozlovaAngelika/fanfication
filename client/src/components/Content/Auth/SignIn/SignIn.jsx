@@ -33,7 +33,7 @@ const SignIn = ({ cnahgeHandler }) => {
                 >
                     Sign in
                 </Button>
-                <Link to='signup'>sign up</Link>
+                <Link to='/auth/signup'>sign up</Link>
             </div>
         </Form >
     );

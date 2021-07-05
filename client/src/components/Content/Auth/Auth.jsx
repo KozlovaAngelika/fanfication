@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Row } from 'react-bootstrap';
 import style from './Auth.module.scss';
-import { Route } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 
@@ -13,12 +13,14 @@ const Auth = () => {
     return (
         <React.Fragment>
             <Row className={`${style.auth} d-flex justify-content-center align-items-start`}>
-                <Route path='/signup'>
-                    <SignUp cnahgeHandler={cnahgeHandler} form={form} setForm={setForm} ></SignUp>
-                </Route>
-                <Route path='/signin'>
-                    <SignIn cnahgeHandler={cnahgeHandler}></SignIn>
-                </Route>
+                <Switch>
+                    <Route path='/auth/signup'>
+                        <SignUp cnahgeHandler={cnahgeHandler} form={form} setForm={setForm} ></SignUp>
+                    </Route>
+                    <Route path='/auth/signin'>
+                        <SignIn cnahgeHandler={cnahgeHandler}></SignIn>
+                    </Route>
+                </Switch>
             </Row>
         </React.Fragment>
     );

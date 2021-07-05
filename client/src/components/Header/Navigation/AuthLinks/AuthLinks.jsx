@@ -5,9 +5,9 @@ import style from './AuthLinks.module.scss';
 const AuthLinks = () => {
     return (
         <div className={`${style.authLinks} d-flex align-items-center`}>
-            <Link to='signin'>sign in</Link>
+            <Link to='/auth/signin'>sign in</Link>
             <div className={style.separator}></div>
-            <Link to='signup'>sign up</Link>
+            <Link to='/auth/signup'>sign up</Link>
         </div>
     );
 }
