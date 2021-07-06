@@ -1,10 +1,14 @@
 .authLinks {
+    span{
+        padding: 5px;
+    }
     .separator {
         width: 1px;
         height: 1rem;
         background-color: #686767;
+        margin: 10px;
     }
-    a {
+    a, button{
         text-decoration: none;
         padding: 5px;
     }

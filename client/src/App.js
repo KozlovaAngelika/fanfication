@@ -3,7 +3,7 @@ import './App.scss';
 import { ThemeSwitcherProvider } from 'react-css-theme-switcher';
 import Header from './components/Header/Header';
 import Content from './components/Content/Content';
-import { BrowserRouter, Switch } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom';
 import { AuthContext } from './context/AuthContext';
 import { useAuth } from './hooks/auth.hook';
 
@@ -14,10 +14,10 @@ const themes = {
 
 const App = () => {
   const [currentTheme, setCurrentTheme] = useState(localStorage.getItem('currentTheme'));
-  const { login, logout, token, userId, isReady } = useAuth();
+  const { login, logout, token, userId, isReady, name } = useAuth();
   const isLogin = !!token;
   return (
-    <AuthContext.Provider value={{ login, logout, token, userId, isReady, isLogin }}>
+    <AuthContext.Provider value={{ login, logout, token, userId, isReady, name, isLogin }}>
       <BrowserRouter>
         <ThemeSwitcherProvider defaultTheme={currentTheme} themeMap={themes}>
           <Header currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}></Header>

@@ -77,8 +77,9 @@ router.post('/login', [
                 userId: user.id
             }, config.get("jwtSecret"))
             res.status(200).json({
-                token,
-                userId: user.id
+                id: user._id,
+                token: token,
+                name: user.name
             })
         } catch (error) {
             console.error(error);

@@ -3,7 +3,7 @@ import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { sha3_256 } from "js-sha3";
 import axios from 'axios';
-import { AuthContext } from '@context/AuthContext'
+import { AuthContext } from '@context/AuthContext';
 const SignIn = ({ cnahgeHandler, form, setForm }) => {
     const { login } = useContext(AuthContext);
     const loginHandler = async () => {
@@ -19,7 +19,7 @@ const SignIn = ({ cnahgeHandler, form, setForm }) => {
             }
             )
                 .then((res) => {
-                    login(res.data.token, res.data.userId);
+                    login(res.data);
                 })
         } catch (error) {
             console.error(error)
