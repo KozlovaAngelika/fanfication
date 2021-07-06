@@ -2,7 +2,9 @@ import Router from 'express';
 import User from './../models/user.js'
 import { check, validationResult } from 'express-validator'
 import bcrypt from "bcrypt";
-import jwt from 'jsonwebtoken'
+import jwt from 'jsonwebtoken';
+import config from 'config';
+
 const router = Router();
 
 router.post('/registration', [
@@ -74,7 +76,7 @@ router.post('/login', [
             const token = jwt.sign({
                 userId: user.id
             }, config.get("jwtSecret"))
-            res.json({
+            res.status(200).json({
                 token,
                 userId: user.id
             })

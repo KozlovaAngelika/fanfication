@@ -1,7 +1,30 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-const SignIn = ({ cnahgeHandler }) => {
+import { sha3_256 } from "js-sha3";
+import axios from 'axios';
+import { AuthContext } from '@context/AuthContext'
+const SignIn = ({ cnahgeHandler, form, setForm }) => {
+    const { login } = useContext(AuthContext);
+    const loginHandler = async () => {
+        try {
+            form.password = (sha3_256(form.password))
+            await axios.post('/api/auth/login', {
+                email: form.email,
+                password: form.password
+            }, {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+            )
+                .then((res) => {
+                    login(res.data.token, res.data.userId);
+                })
+        } catch (error) {
+            console.error(error)
+        }
+    }
     return (
         <Form onSubmit={(e) => { e.preventDefault() }} className='d-flex flex-column justify-content-between'>
             <h3>Sign in</h3>
@@ -30,6 +53,7 @@ const SignIn = ({ cnahgeHandler }) => {
                     variant="secondary"
                     className="button"
                     type="submit"
+                    onClick={loginHandler}
                 >
                     Sign in
                 </Button>

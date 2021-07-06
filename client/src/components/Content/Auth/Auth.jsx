@@ -18,7 +18,7 @@ const Auth = () => {
                         <SignUp cnahgeHandler={cnahgeHandler} form={form} setForm={setForm} ></SignUp>
                     </Route>
                     <Route path='/auth/signin'>
-                        <SignIn cnahgeHandler={cnahgeHandler}></SignIn>
+                        <SignIn cnahgeHandler={cnahgeHandler} form={form} setForm={setForm}></SignIn>
                     </Route>
                 </Switch>
             </Row>

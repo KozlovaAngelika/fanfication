@@ -1,12 +1,12 @@
-import React from 'react';
-import Auth from './Auth/Auth';
+import React, { useContext } from 'react';
 import { Container } from 'react-bootstrap';
 import style from './Content.module.scss';
 import { useRoutes } from '@routes';
-import { AuthContext } from './../../context/AuthContext';
+import { AuthContext } from '@context/AuthContext';
+
 
 const Content = () => {
-    const { isLogin } = AuthContext;
+    const { isLogin } = useContext(AuthContext);
     return (
         <Container className={style.content}>
             {useRoutes(isLogin)}
