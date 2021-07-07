@@ -8,7 +8,7 @@ import config from 'config';
 const router = Router();
 
 router.post('/registration', [
-    check('email', 'Email is not correct').isEmail(),
+    check('email', 'email isn`t correct').normalizeEmail({ "gmail_remove_dots": false }).isEmail(),
     check('password', 'Password is too short').isLength({
         min: 1
     })

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Row } from 'react-bootstrap';
 import style from './Auth.module.scss';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import SignIn from './SignIn/SignIn';
 import SignUp from './SignUp/SignUp';
 

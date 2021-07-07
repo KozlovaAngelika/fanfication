@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import { sha3_256 } from "js-sha3";
 import axios from 'axios';
 import { AuthContext } from '@context/AuthContext';
+import { NoticeContext } from '@context/NoticeContext';
 const SignIn = ({ cnahgeHandler, form, setForm, clearForm }) => {
     const [loading, setLoading] = useState(false);
+    const { setMessage } = useContext(NoticeContext);
     useEffect(() => {
         clearForm();
-    }, []);
+    });
     const { login } = useContext(AuthContext);
     const loginHandler = async () => {
         try {
@@ -30,7 +32,7 @@ const SignIn = ({ cnahgeHandler, form, setForm, clearForm }) => {
                     setLoading(false);
                 })
         } catch (error) {
-            console.error(error)
+            setMessage(error.response.data.message);
             setLoading(false);
         }
     }

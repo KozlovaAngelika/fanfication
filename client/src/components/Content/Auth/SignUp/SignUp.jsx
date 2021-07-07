@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { sha3_256 } from "js-sha3";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
+import { NoticeContext } from '@context/NoticeContext';
 
 const SignUp = ({ cnahgeHandler, form, setForm, clearForm }) => {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
+    const { setMessage } = useContext(NoticeContext);
     useEffect(() => {
         clearForm();
-    }, []);
+    });
     const registerHandler = async () => {
         try {
             clearForm();
@@ -29,7 +31,7 @@ const SignUp = ({ cnahgeHandler, form, setForm, clearForm }) => {
                 })
             history.push("./signin");
         } catch (error) {
-            console.error(error)
+            setMessage(error.response.data.message)
             clearForm();
             setLoading(false);
         }
