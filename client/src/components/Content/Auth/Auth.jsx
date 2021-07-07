@@ -10,15 +10,18 @@ const Auth = () => {
     const cnahgeHandler = (event) => {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
+    const clearForm = () => {
+        setForm({ name: '', email: '', password: '' })
+    }
     return (
         <React.Fragment>
             <Row className={`${style.auth} d-flex justify-content-center align-items-start`}>
                 <Switch>
                     <Route path='/auth/signup'>
-                        <SignUp cnahgeHandler={cnahgeHandler} form={form} setForm={setForm} ></SignUp>
+                        <SignUp cnahgeHandler={cnahgeHandler} form={form} setForm={setForm} clearForm={clearForm}></SignUp>
                     </Route>
                     <Route path='/auth/signin'>
-                        <SignIn cnahgeHandler={cnahgeHandler} form={form} setForm={setForm}></SignIn>
+                        <SignIn cnahgeHandler={cnahgeHandler} form={form} setForm={setForm} clearForm={clearForm} ></SignIn>
                     </Route>
                 </Switch>
             </Row>

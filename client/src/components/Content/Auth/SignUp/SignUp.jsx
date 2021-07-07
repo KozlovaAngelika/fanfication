@@ -1,19 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { sha3_256 } from "js-sha3";
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
-const SignUp = ({ cnahgeHandler, form, setForm }) => {
+const SignUp = ({ cnahgeHandler, form, setForm, clearForm }) => {
+    const [loading, setLoading] = useState(false);
     const history = useHistory();
     useEffect(() => {
-        setForm(
-            { name: '', email: '', password: '' }
-        )
+        clearForm();
     }, []);
     const registerHandler = async () => {
         try {
+            clearForm();
+            setLoading(true);
             form.password = (sha3_256(form.password))
             await axios.post('/api/auth/registration', {
                 ...form
@@ -23,14 +24,14 @@ const SignUp = ({ cnahgeHandler, form, setForm }) => {
                 }
             }
             )
-
                 .then((res) => {
-                    setForm(
-                        { name: '', email: '', password: '' }
-                    )
+                    setLoading(false);
                 })
+            history.push("./signin");
         } catch (error) {
             console.error(error)
+            clearForm();
+            setLoading(false);
         }
     }
     return (
@@ -74,6 +75,7 @@ const SignUp = ({ cnahgeHandler, form, setForm }) => {
                     className="button"
                     type="submit"
                     onClick={registerHandler}
+                    disabled={loading}
                 >
                     Sign up
                 </Button>

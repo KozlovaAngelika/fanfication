@@ -1,18 +1,19 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { sha3_256 } from "js-sha3";
 import axios from 'axios';
 import { AuthContext } from '@context/AuthContext';
-const SignIn = ({ cnahgeHandler, form, setForm }) => {
+const SignIn = ({ cnahgeHandler, form, setForm, clearForm }) => {
+    const [loading, setLoading] = useState(false);
     useEffect(() => {
-        setForm(
-            { name: '', email: '', password: '' }
-        )
+        clearForm();
     }, []);
     const { login } = useContext(AuthContext);
     const loginHandler = async () => {
         try {
+            clearForm();
+            setLoading(true);
             form.password = (sha3_256(form.password))
             await axios.post('/api/auth/login', {
                 email: form.email,
@@ -24,13 +25,13 @@ const SignIn = ({ cnahgeHandler, form, setForm }) => {
             }
             )
                 .then((res) => {
+                    clearForm();
                     login(res.data);
-                    setForm(
-                        { name: '', email: '', password: '' }
-                    )
+                    setLoading(false);
                 })
         } catch (error) {
             console.error(error)
+            setLoading(false);
         }
     }
     return (
@@ -64,6 +65,7 @@ const SignIn = ({ cnahgeHandler, form, setForm }) => {
                     className="button"
                     type="submit"
                     onClick={loginHandler}
+                    disabled={loading}
                 >
                     Sign in
                 </Button>
