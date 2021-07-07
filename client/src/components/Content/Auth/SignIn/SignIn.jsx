@@ -1,10 +1,15 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { sha3_256 } from "js-sha3";
 import axios from 'axios';
 import { AuthContext } from '@context/AuthContext';
 const SignIn = ({ cnahgeHandler, form, setForm }) => {
+    useEffect(() => {
+        setForm(
+            { name: '', email: '', password: '' }
+        )
+    }, []);
     const { login } = useContext(AuthContext);
     const loginHandler = async () => {
         try {
@@ -20,6 +25,9 @@ const SignIn = ({ cnahgeHandler, form, setForm }) => {
             )
                 .then((res) => {
                     login(res.data);
+                    setForm(
+                        { name: '', email: '', password: '' }
+                    )
                 })
         } catch (error) {
             console.error(error)
@@ -34,6 +42,7 @@ const SignIn = ({ cnahgeHandler, form, setForm }) => {
                     <Form.Control
                         type="email"
                         placeholder="Enter email"
+                        value={form.email}
                         name="email"
                         onChange={cnahgeHandler}
                     />
@@ -44,6 +53,7 @@ const SignIn = ({ cnahgeHandler, form, setForm }) => {
                         type="password"
                         placeholder="Password"
                         name="password"
+                        value={form.password}
                         onChange={cnahgeHandler}
                     />
                 </Form.Group>

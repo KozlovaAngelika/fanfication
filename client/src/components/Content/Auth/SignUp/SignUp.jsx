@@ -1,10 +1,17 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { sha3_256 } from "js-sha3";
 import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
 const SignUp = ({ cnahgeHandler, form, setForm }) => {
+    const history = useHistory();
+    useEffect(() => {
+        setForm(
+            { name: '', email: '', password: '' }
+        )
+    }, []);
     const registerHandler = async () => {
         try {
             form.password = (sha3_256(form.password))
@@ -16,8 +23,11 @@ const SignUp = ({ cnahgeHandler, form, setForm }) => {
                 }
             }
             )
+
                 .then((res) => {
-                    console.log(res);
+                    setForm(
+                        { name: '', email: '', password: '' }
+                    )
                 })
         } catch (error) {
             console.error(error)
@@ -33,6 +43,7 @@ const SignUp = ({ cnahgeHandler, form, setForm }) => {
                         type="text"
                         placeholder="Enter your name"
                         name="name"
+                        value={form.name}
                         onChange={cnahgeHandler}
                     />
                 </Form.Group>
@@ -42,6 +53,7 @@ const SignUp = ({ cnahgeHandler, form, setForm }) => {
                         type="email"
                         placeholder="Enter email"
                         name="email"
+                        value={form.email}
                         onChange={cnahgeHandler}
                     />
                 </Form.Group>
@@ -51,6 +63,7 @@ const SignUp = ({ cnahgeHandler, form, setForm }) => {
                         type="password"
                         placeholder="Password"
                         name="password"
+                        value={form.password}
                         onChange={cnahgeHandler}
                     />
                 </Form.Group>
