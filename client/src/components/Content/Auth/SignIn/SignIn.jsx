@@ -10,7 +10,7 @@ const SignIn = ({ cnahgeHandler, form, setForm, clearForm }) => {
     const { setMessage } = useContext(NoticeContext);
     useEffect(() => {
         clearForm();
-    });
+    }, []);
     const { login } = useContext(AuthContext);
     const loginHandler = async () => {
         try {

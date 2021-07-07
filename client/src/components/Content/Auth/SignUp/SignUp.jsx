@@ -12,7 +12,7 @@ const SignUp = ({ cnahgeHandler, form, setForm, clearForm }) => {
     const { setMessage } = useContext(NoticeContext);
     useEffect(() => {
         clearForm();
-    });
+    }, []);
     const registerHandler = async () => {
         try {
             clearForm();

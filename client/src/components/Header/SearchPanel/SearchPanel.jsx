@@ -1,9 +1,16 @@
 import React from 'react';
-import { Row } from 'react-bootstrap';
+import { Col, Row, Form } from 'react-bootstrap';
+import style from './SearchPanel.module.scss'
 
 const SearchPanel = () => {
     return (
-        <Row></Row>
+        <Row className={style.searchPanel}>
+            <Col className='d-flex justify-content-md-end align-items-center'>
+                <Form>
+                    <Form.Control type="text" placeholder="search" />
+                </Form>
+            </Col>
+        </Row>
     );
 }
 
