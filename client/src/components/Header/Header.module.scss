@@ -4,4 +4,14 @@
     left: 0;
     right: 0;
     padding: 1rem 0;
+    .navigation{
+        padding: 1rem;
+    }
+    .logo{
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center;
+    }
 }
