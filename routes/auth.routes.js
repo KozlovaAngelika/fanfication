@@ -46,8 +46,8 @@ router.post('/registration', [
         }
     })
 router.post('/login', [
-    check('email', 'Email is not correct').isEmail(),
-    check('password', 'Password is not correct').exists()
+    check('email', 'email isn`t correct').normalizeEmail({ "gmail_remove_dots": false }).isEmail(),
+    check('password', 'Enter your password').exists()
 ],
     async (req, res) => {
         try {
