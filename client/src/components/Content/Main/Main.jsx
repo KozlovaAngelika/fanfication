@@ -1,10 +1,11 @@
 import React from 'react';
+import SearchPanel from './SearchPanel/SearchPanel';
 
 const Main = () => {
     return (
-        <div>
-
-        </div>
+        <React.Fragment>
+            <SearchPanel></SearchPanel>
+        </React.Fragment>
     );
 }
 

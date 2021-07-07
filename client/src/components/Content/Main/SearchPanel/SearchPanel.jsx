@@ -5,7 +5,7 @@ import style from './SearchPanel.module.scss'
 const SearchPanel = () => {
     return (
         <Row className={style.searchPanel}>
-            <Col className='d-flex justify-content-md-end align-items-center'>
+            <Col>
                 <Form>
                     <Form.Control type="text" placeholder="search" />
                 </Form>
