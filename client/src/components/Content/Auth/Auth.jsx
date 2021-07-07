@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { Row } from 'react-bootstrap';
 import style from './Auth.module.scss';
 import { Route, Switch } from 'react-router-dom';
@@ -10,9 +10,9 @@ const Auth = () => {
     const cnahgeHandler = (event) => {
         setForm({ ...form, [event.target.name]: event.target.value })
     }
-    const clearForm = () => {
+    const clearForm = useCallback(() => {
         setForm({ name: '', email: '', password: '' })
-    }
+    }, [])
     return (
         <React.Fragment>
             <Row className={`${style.auth} d-flex justify-content-center align-items-start`}>

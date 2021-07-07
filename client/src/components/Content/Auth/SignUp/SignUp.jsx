@@ -10,9 +10,7 @@ const SignUp = ({ cnahgeHandler, form, setForm, clearForm }) => {
     const [loading, setLoading] = useState(false);
     const history = useHistory();
     const { setMessage } = useContext(NoticeContext);
-    useEffect(() => {
-        clearForm();
-    }, []);
+    useEffect(clearForm, [clearForm]);
     const registerHandler = async () => {
         try {
             clearForm();

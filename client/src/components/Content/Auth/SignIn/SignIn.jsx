@@ -8,9 +8,7 @@ import { NoticeContext } from '@context/NoticeContext';
 const SignIn = ({ cnahgeHandler, form, setForm, clearForm }) => {
     const [loading, setLoading] = useState(false);
     const { setMessage } = useContext(NoticeContext);
-    useEffect(() => {
-        clearForm();
-    }, []);
+    useEffect(clearForm, [clearForm]);
     const { login } = useContext(AuthContext);
     const loginHandler = async () => {
         try {
