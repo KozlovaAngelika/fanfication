@@ -3,20 +3,20 @@ import Fanfic from './../models/fanfication.js'
 
 const funfictionRouter = Router();
 const formatDate = (date) => {
-    const dd = date.getDate();
+    let dd = date.getDate();
     if (dd < 10) dd = '0' + dd;
 
-    const mm = date.getMonth() + 1;
+    let mm = date.getMonth() + 1;
     if (mm < 10) mm = '0' + mm;
 
-    const yy = date.getFullYear() % 100;
+    let yy = date.getFullYear() % 100;
     if (yy < 10) yy = '0' + yy;
     return `${dd}.${mm}.${yy}`;
 }
-funfictionRouter.post('/add', async (req, res) => {
+funfictionRouter.post('/fanfiction', async (req, res) => {
     try {
         const { name, fandom, content, userId } = req.body;
-        const lastUpdateDay = formatDate(new Date());
+        const lastUpdateDate = formatDate(new Date());
         const fanfic = await new Fanfic({
             name: name,
             fandom: fandom,
@@ -32,6 +32,16 @@ funfictionRouter.post('/add', async (req, res) => {
         )
     } catch (error) {
         console.error(error)
+    }
+})
+funfictionRouter.get('/fanfiction', async (req, res) => {
+    try {
+        const fanfiction = await Fanfic.find();
+        return res.json(fanfiction)
+    } catch (error) {
+        res.status(500).json({
+            message: 'Error. Try again'
+        })
     }
 })
 export default funfictionRouter;
