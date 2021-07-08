@@ -16,7 +16,7 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    fanfiction: [{ type: mongoose.Types.ObjectId, ref: 'Fanfication' }]
+    fanfiction: [{ type: mongoose.Types.ObjectId, ref: 'Fanfic' }]
 });
 
 const User = mongoose.model('User', UserSchema);

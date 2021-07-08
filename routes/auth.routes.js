@@ -5,9 +5,9 @@ import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 import config from 'config';
 
-const router = Router();
+const authRouter = Router();
 
-router.post('/registration', [
+authRouter.post('/registration', [
     check('email', 'email isn`t correct').normalizeEmail({ "gmail_remove_dots": false }).isEmail(),
     check('password', 'Password is too short').isLength({
         min: 1
@@ -45,7 +45,7 @@ router.post('/registration', [
             console.error(error);
         }
     })
-router.post('/login', [
+authRouter.post('/login', [
     check('email', 'email isn`t correct').normalizeEmail({ "gmail_remove_dots": false }).isEmail(),
     check('password', 'Enter your password').exists()
 ],
@@ -85,4 +85,4 @@ router.post('/login', [
             console.error(error);
         }
     })
-export default router;
+export default authRouter;
