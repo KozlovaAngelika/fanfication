@@ -1,0 +1,14 @@
+.fanfiction{
+    padding:3rem;
+    margin: 0 auto;
+    overflow-y: scroll;
+    max-height: 60vh;
+    flex-wrap: nowrap;
+    &::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+}
+.error{
+    padding: 3rem;
+}

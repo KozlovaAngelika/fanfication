@@ -7,7 +7,7 @@ const SearchPanel = () => {
         <Row className={style.searchPanel}>
             <Col>
                 <Form>
-                    <Form.Control type="text" placeholder="search" />
+                    <Form.Control type="text" placeholder="Search by name" />
                 </Form>
             </Col>
         </Row>
