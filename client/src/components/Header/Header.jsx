@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { Col, Row, Form } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import AuthLinks from './AuthLinks/AuthLinks';
 import ThemeSwitcherBtn from './ThemeSwitcherBtn/ThemeSwitcherBtn';
 import style from './Header.module.scss';
