@@ -11,7 +11,8 @@ module.exports = {
                     '@routes': './src/routes.jsx',
                     '@media': './src/media',
                     '@context': './src/context',
-                    '@hooks': './src/hooks'
+                    '@hooks': './src/hooks',
+                    '@loader': './src/components/Loader'
                 }
             }
         }

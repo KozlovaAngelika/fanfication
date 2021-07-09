@@ -3,7 +3,7 @@ import SearchPanel from './SearchPanel/SearchPanel';
 import { Col } from 'react-bootstrap';
 import style from './Main.module.scss';
 import Funfiction from './../Fanfiction/Fanfiction';
-import Loader from '../../Loader/Loader'
+import Loader from '@loader/Loader'
 import ErrorMessage from '../../ErrorMessage/ErrorMessage'
 import { useHttp } from "@hooks/http.hook";
 
