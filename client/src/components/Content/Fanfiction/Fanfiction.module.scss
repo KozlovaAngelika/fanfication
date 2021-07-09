@@ -4,9 +4,29 @@
     overflow-y: scroll;
     max-height: 60vh;
     flex-wrap: nowrap;
+    h1 {
+        font-size: 2rem;
+    }
     &::-webkit-scrollbar {
         width: 0;
         height: 0;
+    }
+    .sortByDateBtn{
+        cursor: pointer;
+        width: fit-content;
+        padding: 10px;
+        border: 1px solid #7a7a7ab9;
+        border-radius: 10px;
+        &:hover{
+            opacity: 0.8;
+        }
+       svg{
+        width: 25px;
+        height:25px;
+       path {
+        fill:#28a745;
+     }
+       }
     }
 }
 .error{
