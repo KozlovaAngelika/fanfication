@@ -11,8 +11,7 @@ const Main = () => {
                 return res.data;
             });
             setAllFanfiction(data);
-        }
-        , [])
+        }, [])
     useEffect(
         getFanfiction, [getFanfiction]
     )

@@ -5,12 +5,13 @@ const funfictionRouter = Router();
 
 funfictionRouter.post('/fanfiction', async (req, res) => {
     try {
-        const { name, fandom, content, owner } = req.body;
+        const { name, fandom, shortDescription, content, owner } = req.body;
         const lastUpdateDate = new Date();
         const fanfic = await new Fanfic({
             name: name,
             fandom: fandom,
             lastUpdateDate: lastUpdateDate,
+            shortDescription: shortDescription,
             content: content,
             owner: owner
         })

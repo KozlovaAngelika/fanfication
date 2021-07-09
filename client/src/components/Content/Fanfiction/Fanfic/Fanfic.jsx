@@ -17,7 +17,7 @@ const Fanfic = ({ data }) => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col className={style.content}><p>{data.content}</p></Col>
+                    <Col className={style.content}><p>{data.shortDescription}</p></Col>
                 </Row>
                 <Row>
                     <Col xs={6}><span className={style.owner}>Owner</span></Col>
