@@ -15,14 +15,14 @@ const formatDate = (date) => {
 }
 funfictionRouter.post('/fanfiction', async (req, res) => {
     try {
-        const { name, fandom, content, userId } = req.body;
+        const { name, fandom, content, owner } = req.body;
         const lastUpdateDate = formatDate(new Date());
         const fanfic = await new Fanfic({
             name: name,
             fandom: fandom,
             lastUpdateDate: lastUpdateDate,
             content: content,
-            owner: userId
+            owner: owner
         })
         await fanfic.save();
         res.status(200).json(
