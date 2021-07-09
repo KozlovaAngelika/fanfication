@@ -29,12 +29,9 @@ const Main = () => {
     return (
         <Col className={style.main}>
             < SearchPanel ></SearchPanel >
-            <div>
-                {loaderElement}
-                {errorElement}
-                {contentElement}
-            </div>
-
+            {loaderElement}
+            {errorElement}
+            {contentElement}
         </Col>
     );
 }

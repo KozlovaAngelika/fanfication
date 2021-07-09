@@ -1,10 +1,9 @@
 import React from 'react';
+import style from './ErrorMessage.module.scss'
 
 const ErrorMessage = () => {
     return (
-        <div>
-            <p>Error</p>
-        </div>
+        <p className={style.error}>Something went wrong. Please, try again...</p>
     );
 }
 
