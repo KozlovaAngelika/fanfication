@@ -1,8 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import config from 'config';
-import authRouter from './routes/auth.routes.js'
-import fanfictionRouter from './routes/fanfiction.routes.js'
+import authRouter from './routes/auth.routes.js';
+import fanfictionRouter from './routes/fanfiction.routes.js';
 
 const app = express();
 const PORT = config.get('port') || 5000;
@@ -11,7 +11,6 @@ app.use(express.json({
 }));
 app.use('/api/auth', authRouter);
 app.use('/api/funfic', fanfictionRouter);
-
 
 async function start() {
     try {

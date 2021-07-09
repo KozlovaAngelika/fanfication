@@ -39,16 +39,13 @@ export const useHttp = () => {
         } catch (e) {
             setLoading(false);
             setError(e.message);
-            throw e;
+            console.error(e);
         }
     }, [])
-    const clearError = () => {
-        setError(null);
-    }
+
     return {
         loading,
         request,
-        error,
-        clearError
+        error
     }
 }
