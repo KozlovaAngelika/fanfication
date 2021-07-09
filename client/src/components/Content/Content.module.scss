@@ -1,6 +1,8 @@
 .content {
+    position: relative;
     height: 100vh;
     padding-top: 150px;
+    padding-bottom: 50px;
 }
 @media(max-width:768px) {
     .content {

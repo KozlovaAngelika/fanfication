@@ -1,6 +1,9 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import SearchPanel from './SearchPanel/SearchPanel';
+import { Col } from 'react-bootstrap';
+import style from './Main.module.scss';
 import Funfiction from './../Fanfiction/Fanfiction';
+import Loader from '../../Loader/Loader'
 import axios from 'axios';
 
 const Main = () => {
@@ -16,10 +19,14 @@ const Main = () => {
         getFanfiction, [getFanfiction]
     )
     return (
-        <React.Fragment>
-            <SearchPanel></SearchPanel>
-            <Funfiction fanfictionData={allFanfiction ? allFanfiction : []}></Funfiction>
-        </React.Fragment>
+        <Col className={style.main}>
+            < SearchPanel ></SearchPanel >
+            <div>
+                {/* <Funfiction fanfictionData={allFanfiction ? allFanfiction : []}></Funfiction> */}
+                < Loader ></Loader >
+            </div>
+
+        </Col>
     );
 }
 
