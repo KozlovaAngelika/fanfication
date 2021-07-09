@@ -5,27 +5,24 @@ import style from './Main.module.scss';
 import Funfiction from './../Fanfiction/Fanfiction';
 import Loader from '../../Loader/Loader'
 import ErrorMessage from '../../ErrorMessage/ErrorMessage'
-import axios from 'axios';
+import { useHttp } from "@hooks/http.hook";
 
 const Main = () => {
     const [allFanfiction, setAllFanfiction] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(false);
+    const { loading, request, error } = useHttp();
     const getFanfiction = useCallback(
         async () => {
-            setIsLoading(true)
-            const data = await axios.get("/api/funfic/fanfiction").then((res) => {
-                setIsLoading(false);
-                return res.data;
+            const data = await request("/api/funfic/fanfiction", "GET").then((data) => {
+                return data;
             });
             setAllFanfiction(data);
         }, [])
     useEffect(
         getFanfiction, [getFanfiction]
     )
-    const loaderElement = isLoading ? <Loader></Loader> : null;
+    const loaderElement = loading ? <Loader></Loader> : null;
     const errorElement = error ? <ErrorMessage></ErrorMessage> : null;
-    const contentElement = !isLoading && !error ? <Funfiction fanfictionData={allFanfiction ? allFanfiction : []}></Funfiction> : null;
+    const contentElement = !loading && !error ? <Funfiction fanfictionData={allFanfiction ? allFanfiction : []}></Funfiction> : null;
     return (
         <Col className={style.main}>
             < SearchPanel ></SearchPanel >

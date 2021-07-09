@@ -2,36 +2,29 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { sha3_256 } from "js-sha3";
-import axios from 'axios';
 import { useHistory } from "react-router-dom";
 import { NoticeContext } from '@context/NoticeContext';
+import { useHttp } from "@hooks/http.hook";
 
 const SignUp = ({ cnahgeHandler, form, setForm, clearForm }) => {
-    const [loading, setLoading] = useState(false);
+
     const history = useHistory();
     const { setMessage } = useContext(NoticeContext);
+    const { loading, request } = useHttp();
+
     useEffect(clearForm, [clearForm]);
+
     const registerHandler = async () => {
         try {
             clearForm();
-            setLoading(true);
             form.password = (sha3_256(form.password))
-            await axios.post('/api/auth/registration', {
+            await request('/api/auth/registration', "POST", {
                 ...form
-            }, {
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-            )
-                .then((res) => {
-                    setLoading(false);
-                })
+            })
             history.push("./signin");
         } catch (error) {
-            setMessage(error.response.data.message)
+            setMessage(error.message)
             clearForm();
-            setLoading(false);
         }
     }
     return (
