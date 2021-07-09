@@ -15,10 +15,11 @@ const themes = {
 };
 
 const App = () => {
-  const [currentTheme, setCurrentTheme] = useState(localStorage.getItem('currentTheme'));
+  const [currentTheme, setCurrentTheme] = useState(localStorage.getItem('currentTheme') || 'light');
   const { login, logout, token, userId, isReady, name } = useAuth();
   const [message, setMessage] = useState(null);
   const isLogin = !!token;
+
   return (
     <AuthContext.Provider value={{ login, logout, token, userId, isReady, name, isLogin }}>
       <NoticeContext.Provider value={{ message, setMessage }}>
