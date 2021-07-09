@@ -4,7 +4,7 @@ import { Col } from 'react-bootstrap';
 import style from './Main.module.scss';
 import Funfiction from './../Fanfiction/Fanfiction';
 import Loader from '@loader/Loader'
-import ErrorMessage from '../../ErrorMessage/ErrorMessage'
+import ErrorMessage from '@error/ErrorMessage'
 import { useHttp } from "@hooks/http.hook";
 
 const Main = () => {

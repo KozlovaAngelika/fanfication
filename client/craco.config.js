@@ -12,7 +12,8 @@ module.exports = {
                     '@media': './src/media',
                     '@context': './src/context',
                     '@hooks': './src/hooks',
-                    '@loader': './src/components/Loader'
+                    '@loader': './src/components/Loader',
+                    '@error': './src/components/ErrorMessage'
                 }
             }
         }
