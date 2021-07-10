@@ -1,30 +1,25 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { sha3_256 } from "js-sha3";
 import { useHistory } from "react-router-dom";
-import { NoticeContext } from '@context/NoticeContext';
 import { useHttp } from "@hooks/http.hook";
 
 const SignUp = ({ cnahgeHandler, form, setForm, clearForm }) => {
 
     const history = useHistory();
-    const { setMessage } = useContext(NoticeContext);
     const { loading, request } = useHttp();
 
     useEffect(clearForm, [clearForm]);
 
     const registerHandler = async () => {
-        try {
-            clearForm();
-            form.password = (sha3_256(form.password))
-            await request('/api/auth/registration', "POST", {
-                ...form
-            })
+        clearForm();
+        form.password = (sha3_256(form.password))
+        const data = await request('/api/auth/registration', "POST", {
+            ...form
+        })
+        if (data) {
             history.push("./signin");
-        } catch (error) {
-            setMessage(error.message)
-            clearForm();
         }
     }
     return (

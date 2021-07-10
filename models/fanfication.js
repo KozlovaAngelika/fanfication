@@ -18,7 +18,7 @@ const FanficSchema = new Schema({
         unique: false
     },
     lastUpdateDate: {
-        type: String,
+        type: Date,
         required: false
     },
     content: {

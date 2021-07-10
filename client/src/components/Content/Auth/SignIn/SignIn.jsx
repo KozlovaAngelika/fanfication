@@ -3,31 +3,25 @@ import { Form, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { sha3_256 } from "js-sha3";
 import { AuthContext } from '@context/AuthContext';
-import { NoticeContext } from '@context/NoticeContext';
 import { useHttp } from "@hooks/http.hook";
 const SignIn = ({ cnahgeHandler, form, setForm, clearForm }) => {
 
-    const { setMessage } = useContext(NoticeContext);
     const { login } = useContext(AuthContext);
     const { loading, request } = useHttp();
 
     useEffect(clearForm, [clearForm]);
 
     const loginHandler = async () => {
-        try {
-            clearForm();
-            form.password = (sha3_256(form.password))
-            await request('/api/auth/login', 'POST', {
-                email: form.email,
-                password: form.password
+        clearForm();
+        form.password = (sha3_256(form.password))
+        await request('/api/auth/login', 'POST', {
+            email: form.email,
+            password: form.password
+        })
+            .then((data) => {
+                clearForm();
+                login(data);
             })
-                .then((data) => {
-                    clearForm();
-                    login(data);
-                })
-        } catch (error) {
-            setMessage(error.message);
-        }
     }
     return (
         <Form onSubmit={(e) => { e.preventDefault() }} className='d-flex flex-column justify-content-between'>

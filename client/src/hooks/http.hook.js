@@ -4,12 +4,13 @@ import {
     useContext
 } from 'react';
 import { AuthContext } from "../context/AuthContext";
+import { NoticeContext } from '@context/NoticeContext';
 const storageName = 'userData';
-
 
 export const useHttp = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+    const { setMessage } = useContext(NoticeContext);
     const auth = useContext(AuthContext);
     const request = useCallback(async (url, method = "GET", body = null, headers = {}) => {
         setLoading(true)
@@ -39,6 +40,7 @@ export const useHttp = () => {
         } catch (e) {
             setLoading(false);
             setError(e.message);
+            setMessage(e.message);
             console.error(e);
         }
     }, [])
