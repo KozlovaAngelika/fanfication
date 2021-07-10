@@ -1,12 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Fanfic from './Fanfic/Fanfic'
 import { Row, Col } from 'react-bootstrap';
 import style from './Fanfiction.module.scss';
 const Fanfiction = ({ fanfictionData }) => {
+    const [isLastDataFirst, setIsLastDataFirst] = useState(true);
     if (fanfictionData.length === 0) {
         return <p className={style.error}>No data to display...</p>
     }
     const FanfictionElements = fanfictionData.map((elem) => {
+        elem.lastUpdateDate = new Date(elem.lastUpdateDate);
+        return elem;
+    }
+    ).sort((a, b) => {
+        if (isLastDataFirst) {
+            return b.lastUpdateDate > a.lastUpdateDate ? 1 : -1
+        } else {
+            return a.lastUpdateDate > b.lastUpdateDate ? 1 : -1
+        }
+    }).map((elem) => {
         return <Fanfic data={elem} key={elem._id}></Fanfic>
     })
     return (

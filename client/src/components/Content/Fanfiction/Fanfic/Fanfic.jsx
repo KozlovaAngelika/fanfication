@@ -3,7 +3,7 @@ import { Row, Col } from 'react-bootstrap';
 import style from './Fanfic.module.scss';
 
 const Fanfic = ({ data }) => {
-    data.lastUpdateDate = new Date(data.lastUpdateDate).toDateString();
+    data.lastUpdateDate = data.lastUpdateDate.toDateString();
     return (
         <Row className={style.fanfic}>
             <Col>
