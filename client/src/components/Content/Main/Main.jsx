@@ -9,6 +9,7 @@ import { useHttp } from "@hooks/http.hook";
 
 const Main = () => {
     const [allFanfiction, setAllFanfiction] = useState(null);
+    const [fanfictionForDisplay, setFanfictionForDisplay] = useState(null);
     const { loading, request, error } = useHttp();
     const getFanfiction = useCallback(
         async () => {
@@ -21,6 +22,7 @@ const Main = () => {
                     return elem;
                 });
                 setAllFanfiction(fanfication);
+                setFanfictionForDisplay(fanfication);
             }
         }, [])
     useEffect(
@@ -28,10 +30,10 @@ const Main = () => {
     )
     const loaderElement = loading ? <Loader></Loader> : null;
     const errorElement = error ? <ErrorMessage></ErrorMessage> : null;
-    const contentElement = !loading && !error ? <Funfiction fanfictionData={allFanfiction ? allFanfiction : []}></Funfiction> : null;
+    const contentElement = !loading && !error ? <Funfiction fanfictionData={fanfictionForDisplay ? fanfictionForDisplay : []}></Funfiction> : null;
     return (
         <Col className={style.main}>
-            < SearchPanel ></SearchPanel >
+            < SearchPanel allFanfiction={allFanfiction} setAllFanfiction={setAllFanfiction} fanfictionForDisplay={fanfictionForDisplay} setFanfictionForDisplay={setFanfictionForDisplay}></SearchPanel >
             {loaderElement}
             {errorElement}
             {contentElement}
