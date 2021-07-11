@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import SearchPanel from './SearchPanel/SearchPanel';
+import SearchPanel from './../SearchPanel/SearchPanel';
 import { Col } from 'react-bootstrap';
 import style from './Main.module.scss';
 import Funfiction from './../Fanfiction/Fanfiction';
