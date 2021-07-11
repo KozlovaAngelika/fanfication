@@ -15,7 +15,13 @@ const Main = () => {
             const data = await request("/api/funfic/fanfiction", "GET").then((data) => {
                 return data;
             });
-            setAllFanfiction(data);
+            if (data != null) {
+                const fanfication = data.map((elem) => {
+                    elem.lastUpdateDate = new Date(Date.parse(elem.lastUpdateDate))
+                    return elem;
+                });
+                setAllFanfiction(fanfication);
+            }
         }, [])
     useEffect(
         getFanfiction, [getFanfiction]

@@ -3,7 +3,6 @@ import { Row, Col } from 'react-bootstrap';
 import style from './Fanfic.module.scss';
 
 const Fanfic = ({ data }) => {
-    data.lastUpdateDate = data.lastUpdateDate.toDateString();
     return (
         <Row className={style.fanfic}>
             <Col>
@@ -13,7 +12,7 @@ const Fanfic = ({ data }) => {
                         <span className={style.fandom}>{data.fandom}</span>
                     </Col>
                     <Col xs={6} className='d-flex align-items-start justify-content-end'>
-                        <span className={style.date}>{data.lastUpdateDate}</span>
+                        <span className={style.date}>{data.lastUpdateDate.toDateString()}</span>
                     </Col>
                 </Row>
                 <Row>
