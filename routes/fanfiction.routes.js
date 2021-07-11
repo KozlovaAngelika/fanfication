@@ -66,12 +66,28 @@ funfictionRouter.post('/fanfiction', async (req, res) => {
 })
 funfictionRouter.get('/fanfiction', async (req, res) => {
     try {
-        const fanfiction = await Fanfic.find();
-        return res.json(fanfiction)
+        const fanfication = await Fanfic.aggregate([{
+            $lookup: {
+                from: "users",
+                localField: "owner",
+                foreignField: "_id",
+                as: "owner"
+            }
+        }])
+        const fanficationWithOwnerName = fanfication.map(elem => {
+            const owner = elem.owner;
+            elem.owner = null;
+            if (owner && owner.length != 0) {
+                elem.owner = owner[0].name;
+            }
+            return elem;
+        });
+        return res.json(fanficationWithOwnerName)
     } catch (error) {
         res.status(500).json({
             message: 'Error. Try again'
         })
+        console.error(error);
     }
 })
 export default funfictionRouter;
