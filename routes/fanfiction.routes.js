@@ -3,6 +3,7 @@ import Fanfic from './../models/fanfication.js';
 import User from './../models/user.js';
 import jwt from "jsonwebtoken";
 import config from "config";
+import mongoose from 'mongoose';
 
 const funfictionRouter = Router();
 
@@ -44,7 +45,7 @@ const isAuthorized = async (req) => {
 
 funfictionRouter.post('/fanfiction', async (req, res) => {
     try {
-        const { name, fandom, shortDescription, content, owner } = req.body;
+        const { name, fandom, shortDescription, content } = req.body;
         const lastUpdateDate = new Date();
         const fanfic = await new Fanfic({
             name: name,
@@ -52,7 +53,7 @@ funfictionRouter.post('/fanfiction', async (req, res) => {
             lastUpdateDate: lastUpdateDate,
             shortDescription: shortDescription,
             content: content,
-            owner: owner
+            owner: JSON.parse(req.headers.authorization).id
         })
         await fanfic.save();
         res.status(200).json(
@@ -64,16 +65,27 @@ funfictionRouter.post('/fanfiction', async (req, res) => {
         console.error(error)
     }
 })
+
 funfictionRouter.get('/fanfiction', async (req, res) => {
+    const userId = req.query.userId;
     try {
-        const fanfication = await Fanfic.aggregate([{
+        let fanfication = null;
+        const lookup = {
             $lookup: {
                 from: "users",
                 localField: "owner",
                 foreignField: "_id",
                 as: "owner"
             }
-        }])
+        };
+        if (userId) {
+            fanfication = await Fanfic.aggregate([
+                { $match: { owner: mongoose.Types.ObjectId(userId) } },
+                lookup]);
+        } else {
+            fanfication = await Fanfic.aggregate([
+                lookup]);
+        }
         const fanficationWithOwnerName = fanfication.map(elem => {
             const owner = elem.owner;
             elem.owner = null;
