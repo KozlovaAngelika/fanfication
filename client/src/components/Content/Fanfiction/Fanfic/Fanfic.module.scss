@@ -19,7 +19,7 @@
         font-size: 0.7rem;
         opacity: 0.6;
     }
-    .content p {
+    .shortDescription p {
         max-height: 100px;
         white-space: nowrap;
         overflow: hidden; 
@@ -32,6 +32,11 @@
         padding: 5px;
         opacity: 0.8;
     }
+    .content{
+        display: none;
+        max-height: 450px;
+        overflow-y: scroll;
+    }
     .fullScreenBtn{
        &:hover {
         cursor: pointer;
@@ -42,6 +47,29 @@
             path{
                 fill:#28a745;
             }
+        }
+    }
+    &.show{
+        position: fixed;
+        top: 0;
+        bottom:0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        height: 100vh;
+        background-color: #eee;
+        color:#000;
+        .name{
+            font-size: 3rem;
+            @media(max-width:768px){
+                font-size: 1.5rem;
+            }
+        }
+        .content{
+            display: block;
+        }
+        .shortDescription p {
+            color: rgb(79, 79, 79);
         }
     }
 }
