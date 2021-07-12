@@ -67,6 +67,10 @@
         }
         .content{
             display: block;
+            &::-webkit-scrollbar {
+                width: 0;
+                height: 0;
+              }
         }
         .shortDescription p {
             color: rgb(79, 79, 79);
