@@ -18,7 +18,7 @@ const App = () => {
   const [currentTheme, setCurrentTheme] = useState(localStorage.getItem('currentTheme') || 'light');
   const { login, logout, token, userId, isReady, name } = useAuth();
   const [message, setMessage] = useState(null);
-  const isLogin = !!token;
+  const isLogin = !!token || localStorage.getItem('userData');
 
   return (
     <AuthContext.Provider value={{ login, logout, token, userId, isReady, name, isLogin }}>

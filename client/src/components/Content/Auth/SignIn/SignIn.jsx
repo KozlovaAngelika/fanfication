@@ -20,7 +20,9 @@ const SignIn = ({ cnahgeHandler, form, setForm, clearForm }) => {
         })
             .then((data) => {
                 clearForm();
-                login(data);
+                if (data) {
+                    login(data)
+                }
             })
     }
     return (
