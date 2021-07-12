@@ -49,6 +49,18 @@
             }
         }
     }
+    .deleteBtn{
+        cursor: pointer;
+        margin: 7px;
+        padding: 2px;
+        svg{
+            width: 15px;
+            height: 15px;
+            path{
+                fill:#fff;
+            }
+        }
+    }
     &.show{
         position: fixed;
         top: 0;
@@ -57,7 +69,7 @@
         right: 0;
         z-index: 100;
         height: 100vh;
-        background-color: #bdbcbc;
+        background-color: #d3d3d3;
         color:#000;
         .name{
             font-size: 3rem;

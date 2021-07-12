@@ -30,7 +30,7 @@ const Main = () => {
     )
     const loaderElement = loading ? <Loader></Loader> : null;
     const errorElement = error ? <ErrorMessage></ErrorMessage> : null;
-    const contentElement = !loading && !error ? <Funfiction fanfictionData={fanfictionForDisplay ? fanfictionForDisplay : []}></Funfiction> : null;
+    const contentElement = !loading && !error ? <Funfiction fanfictionData={fanfictionForDisplay ? fanfictionForDisplay : []} isEdit={false}></Funfiction> : null;
     return (
         <Col className={style.main}>
             < SearchPanel allFanfiction={allFanfiction} setAllFanfiction={setAllFanfiction} fanfictionForDisplay={fanfictionForDisplay} setFanfictionForDisplay={setFanfictionForDisplay}></SearchPanel >

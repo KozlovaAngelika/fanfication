@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import Fanfic from './Fanfic/Fanfic'
 import { Row, Col } from 'react-bootstrap';
 import style from './Fanfiction.module.scss';
-const Fanfiction = ({ fanfictionData }) => {
+const Fanfiction = ({ fanfictionData, isEdit, getFanfiction }) => {
     const [isLastDataFirst, setIsLastDataFirst] = useState(true);
     const sortBtnHandler = () => {
         setIsLastDataFirst((isLastDataFirst) => {
@@ -19,7 +19,7 @@ const Fanfiction = ({ fanfictionData }) => {
             return a.lastUpdateDate > b.lastUpdateDate ? 1 : -1
         }
     }).map((elem) => {
-        return <Fanfic data={elem} key={elem._id}></Fanfic>
+        return <Fanfic data={elem} isEdit={isEdit} getFanfiction={getFanfiction} key={elem._id}></Fanfic>
     });
     return (
         <Row className={style.fanfiction}>

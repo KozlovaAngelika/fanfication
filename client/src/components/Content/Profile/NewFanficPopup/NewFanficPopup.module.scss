@@ -1,0 +1,38 @@
+.popup{
+   display: none;
+   position: fixed;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right:0;
+   z-index: 100;
+   background-color: rgba(138, 138, 138, 0.8);
+   &.show{
+       display: flex;
+   }
+   form{
+       max-width: 600px;
+       width: 100%;
+       textarea{
+           width: 100%;
+           resize:none;
+           &::-webkit-scrollbar {
+            width: 0;
+            height:0;
+        }
+        h2 {
+            font-size: 10px;
+            }
+       }
+       .closeBtn{
+           cursor: pointer;
+           svg{
+               width: 20px;
+               height: 20px;
+               path{
+                   fill:#fff;
+               }
+           }
+       }
+   }
+}

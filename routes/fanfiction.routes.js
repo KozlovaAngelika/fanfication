@@ -43,7 +43,7 @@ const isAuthorized = async (req) => {
     return false;
 }
 
-funfictionRouter.post('/fanfiction', async (req, res) => {
+funfictionRouter.put('/fanfiction', async (req, res) => {
     try {
         const { name, fandom, shortDescription, content } = req.body;
         const lastUpdateDate = new Date();
@@ -100,6 +100,19 @@ funfictionRouter.get('/fanfiction', async (req, res) => {
             message: 'Error. Try again'
         })
         console.error(error);
+    }
+})
+
+funfictionRouter.delete('/fanfiction', async (req, res) => {
+    const result = await Fanfic.deleteOne({ _id: mongoose.Types.ObjectId(req.body.id) });
+    if (result.deletedCount != 0) {
+        return res.status(200).json({
+            message: 'ok'
+        });
+    } else {
+        return res.status(500).json({
+            message: 'Error. Try again'
+        })
     }
 })
 export default funfictionRouter;
